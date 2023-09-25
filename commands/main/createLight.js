@@ -121,14 +121,14 @@ module.exports = { // yes?
             }
             else {
                 interaction.deferUpdate(); // we send answer to interaction so discord know bot is answering
-                try {
+                 // try {
                     // if 15 minutes have not passed since the previous message, then we simply change the content of the old one
-                    msgRef.edit(`**Кассиопея:** ${replyKassi} \n**Эридан:** ${replyEridan} \n**Цефей:** ${replyCepheus}`);                  
-                  } catch (err) {
+                    //msgRef.edit(`**Кассиопея:** ${replyKassi} \n**Эридан:** ${replyEridan} \n**Цефей:** ${replyCepheus}`);                  
+                  // } catch (err) {
                     // if 15 minutes passed we delete the old one and create new
                     msgRef.delete(); // deletes the previous message
                     msgRef = await textChannel.send(`**Кассиопея:** ${replyKassi} \n**Эридан:** ${replyEridan} \n**Цефей:** ${replyCepheus}`); // we store the old message in our memory so we can delete it later
-                  }                
+                  // }                
             }
             
             replyKassi = '';
