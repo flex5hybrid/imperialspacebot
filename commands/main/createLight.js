@@ -1,5 +1,5 @@
 const { ActionRowBuilder, SlashCommandBuilder, ButtonBuilder, ButtonStyle, ComponentType} = require('discord.js');
-module.exports = {
+module.exports = { // yes?
 	data: new SlashCommandBuilder()
 		.setName('createlight')
 		.setDescription('Создаёт светофор'),
