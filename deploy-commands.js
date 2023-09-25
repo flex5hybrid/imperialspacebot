@@ -1,5 +1,5 @@
 const { REST, Routes, Client, GatewayIntentBits } = require('discord.js');
-const { clientId, guildId, token } = require('./config.json');
+const { clientId, guildId, token } = require('./.gitignore/config.json');
 const fs = require('node:fs');
 const path = require('node:path');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });

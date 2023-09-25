@@ -1,5 +1,4 @@
 const { ActionRowBuilder, SlashCommandBuilder, ButtonBuilder, ButtonStyle, ComponentType} = require('discord.js');
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('createlight')
@@ -43,6 +42,7 @@ module.exports = {
         let replyCepheus = ' ';
         let used = false;
         let msgRef;
+        const textChannel = await interaction.client.channels.fetch(interaction.channelId);
         collector.on('collect', async (interaction) => {
         
            userclick = interaction.user.id;
@@ -120,8 +120,10 @@ module.exports = {
                 msgRef = await interaction.reply(`**Кассиопея:** ${replyKassi} \n**Эридан:** ${replyEridan} \n**Цефей:** ${replyCepheus}`);
             }
             else {
-                msgRef.edit(`**Кассиопея:** ${replyKassi} \n**Эридан:** ${replyEridan} \n**Цефей:** ${replyCepheus}`);
                 interaction.deferUpdate();
+                // msgRef.edit(); - old way to change old message. makes webhook error in 15 minutes after start.
+                msgRef.delete(); // deletes the previous message
+                msgRef = await textChannel.send(`**Кассиопея:** ${replyKassi} \n**Эридан:** ${replyEridan} \n**Цефей:** ${replyCepheus}`); // we store the old message in our memory so we can delete it later
             }
             
             replyKassi = '';
